@@ -13,7 +13,6 @@ Jinja2==2.9.6
 Mako==1.0.6
 MarkupSafe==1.0
 packaging==16.8
-pygame==1.9.2a0
 PyMySQL==0.7.11
 pyparsing==2.2.0
 python-dateutil==2.6.0

@@ -1,5 +1,5 @@
 from unittest import TestCase
-from api_1_0 import create_app,db
+from app import create_app,db
 from flask import current_app
 
 class BasicsTestCase(TestCase):
