@@ -18,7 +18,7 @@ class AlertNumber(Resource):
 			}
 		)
 	def post(self):
-		AlertRecord.from_json(request.get_json())
+		AlertRecord.from_json(request.json().data)
 		return jsonify({
 			'status':'ok',
 			'msg':'ok'
