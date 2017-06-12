@@ -16,17 +16,17 @@ class AlertRecord(db.Model):
 	@staticmethod
 	def from_json(number_state):
 		i=0
-		while i<9:
+		while i<8:
 			select_new_record=number_state[i]
-			select_old_record=AlertRecord.query.filter_by(name=select_new_record.name).all()
+			select_old_record=AlertRecord.query.filter_by(name=select_new_record['name'])
 			select_old_blue_record=select_old_record.filter_by(color='blue').first()
 			select_old_yellow_record=select_old_record.filter_by(color='yellow').first()
 			select_old_orange_record=select_old_record.filter_by(color='orange').first()
 			select_old_red_record=select_old_record.filter_by(color='red').first()
-			select_old_blue_record.number=select_new_record.blue
-			select_old_yellow_record.number=select_new_record.yellow
-			select_old_orange_record.number=select_new_record.orange
-			select_old_red_record.number=select_new_record.red
+			select_old_blue_record.number=select_new_record['blue']
+			select_old_yellow_record.number=select_new_record['yellow']
+			select_old_orange_record.number=select_new_record['orange']
+			select_old_red_record.number=select_new_record['red']
 			db.session.add_all([select_old_blue_record,select_old_yellow_record,
 			                    select_old_orange_record,select_old_red_record])
 			db.session.commit()

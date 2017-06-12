@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from config import config
 
 db=SQLAlchemy()
-restful=Api()
+restful=Api(prefix='/api_1_0')
 
 def create_app(config_name):
 	app=Flask(__name__)
@@ -14,6 +14,6 @@ def create_app(config_name):
 	db.init_app(app)
 	restful.init_app(app)
 
-	from .api_1_0 import API_1_0
-	app.register_blueprint(API_1_0)
+	from .api_1_0 import alert_frontend
+	app.register_blueprint(alert_frontend)
 	return app

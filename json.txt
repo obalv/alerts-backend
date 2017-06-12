@@ -3,7 +3,7 @@
         {
             "name": "gale",
             "blue": 0,
-            "yellow": 2,
+            "yellow": 3,
             "orange": 4,
             "red": 7
         },

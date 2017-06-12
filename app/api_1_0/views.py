@@ -1,7 +1,13 @@
-from flask import jsonify,request
+from flask import jsonify,request,make_response,render_template
 from flask_restful import Resource
 from app import restful
 from .models import AlertRecord
+from app.api_1_0 import alert_frontend
+
+@alert_frontend.route('/')
+def alert_index():
+	response=make_response(render_template('index.html'))
+	return response
 
 class AlertNumber(Resource):
 	def get(self):
@@ -18,10 +24,8 @@ class AlertNumber(Resource):
 			}
 		)
 	def post(self):
-		AlertRecord.from_json(request.json().data)
-		return jsonify({
-			'status':'ok',
-			'msg':'ok'
-		})
+		json_record = request.get_json(force=True)
+		AlertRecord.from_json(json_record['data'])
+		return jsonify(json_record)
 
 restful.add_resource(AlertNumber,'/')
